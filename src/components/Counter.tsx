@@ -5,6 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store/store';
 import { increment, decrement, reset } from '../store/counterSlice';
 
+// Use `animated(Box)` instead of `animated.div`
+const AnimatedBox = animated(Box);
+
 const Counter = () => {
   const count = useSelector((state: RootState) => state.counter.count);
   const dispatch = useDispatch();
@@ -21,7 +24,7 @@ const Counter = () => {
   }, [count]);
 
   return (
-    <animated.div style={{ ...animationProps, padding: '20px', textAlign: 'center' }}>
+    <AnimatedBox style={{ ...animationProps, padding: '20px', textAlign: 'center' }}>
       <Typography variant="h4">Counter: {count}</Typography>
       <Box mt={2} sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>
         <Button variant="contained" onClick={() => dispatch(increment())}>
@@ -34,7 +37,7 @@ const Counter = () => {
           Reset
         </Button>
       </Box>
-    </animated.div>
+    </AnimatedBox>
   );
 };
 
